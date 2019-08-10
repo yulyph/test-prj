@@ -1,0 +1,13 @@
+.matcard-container {
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  display: flex;
+  .example-card {
+    width: 300px;
+    margin: auto;
+    vertical-align: middle;
+    .mat-card-actions {
+      margin: 0;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'test-prj';
+  // should use some authentication service
+  public loggedIN = false;
+  constructor(private router: Router) {}
+  logOUT = () => {
+    this.loggedIN = false;
+    this.router.navigate(['login']);
+  }
 }
