@@ -1,1 +1,87 @@
-<p>contacts works!</p>
+<div class="contacts-page">
+  <div *ngFor="let contact of allContacts; index as ind">
+    <table>
+      <td>
+        First Name: {{contact.firstName}},
+        Last Name: {{contact.lastName}},
+        Phone Number: {{contact.phoneNumber}},
+        Email: {{contact.email}}
+      </td>
+      <td>
+        <i class="fa fa-edit"
+           (click)="editContact(ind, contact)">
+        </i>
+      </td>
+    </table>
+  </div>
+
+  <hr class="contacts-separator" *ngIf="allContacts.length > 0"/>
+
+  <table>
+    <tr>
+      <td>
+        First Name
+      </td>
+      <td>
+        <input placeholder="First Name"
+               name="firstname"
+               [(ngModel)]="newContact.firstName"
+               required>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Last Name
+      </td>
+      <td>
+        <input placeholder="Last Name"
+               name="lastname"
+               [(ngModel)]="newContact.lastName"
+               required>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Phone Number
+      </td>
+      <td>
+        <input placeholder="Phone Number"
+               name="phonenumber"
+               [(ngModel)]="newContact.phoneNumber"
+               required>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        Email
+      </td>
+      <td>
+        <input placeholder="Email"
+               name="email"
+               [(ngModel)]="newContact.email"
+               required>
+      </td>
+    </tr>
+  </table>
+  <button mat-raised-button
+          color="primary"
+          class="add-contact-btn"
+          (click)="addContact()"
+          *ngIf="!this.isEditMode">
+    Add Contact
+  </button>
+  <button mat-raised-button
+          color="primary"
+          class="add-contact-btn"
+          (click)="saveContact()"
+          *ngIf="this.isEditMode">
+    Save
+  </button>
+  <button mat-raised-button
+          color="primary"
+          class="add-contact-btn"
+          (click)="cancelContact()"
+          *ngIf="this.isEditMode">
+    Cancel
+  </button>
+</div>

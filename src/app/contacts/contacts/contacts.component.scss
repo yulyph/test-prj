@@ -1,0 +1,25 @@
+.contacts-page {
+  padding: 20px 0 0 0;
+  overflow-y: auto;
+  max-height: calc(100vh - 80px);
+  width: 100%;
+  display: table;
+  table {
+    td {
+      vertical-align: middle;
+    }
+  }
+}
+
+.contacts-separator {
+  margin: 5px 5px 20px 5px;
+}
+
+.add-contact-btn {
+  margin: 10px;
+}
+
+.fa-edit {
+  color: red;
+  cursor: pointer;
+}

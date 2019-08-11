@@ -4,12 +4,16 @@ import { LoginComponent } from './login/login.component';
 
 import { AppRoutingModule } from '../app-routing.module';
 import {MatToolbarModule} from '@angular/material';
+import {CustomMaterialModule} from '../core/material.module';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [LoginComponent],
   imports: [
     CommonModule,
-    MatToolbarModule
+    MatToolbarModule,
+    CustomMaterialModule,
+    FormsModule
   ]
 })
 export class LoginModule { }

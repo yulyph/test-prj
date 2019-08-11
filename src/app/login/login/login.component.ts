@@ -16,15 +16,17 @@ export class LoginComponent implements OnInit {
   password: string;
 
   ngOnInit() {
-    this.appComponent.loggedIN = false;
+    if (this.appComponent.isLoggedIn) {
+      this.router.navigate(['contacts']);
+    }
   }
 
   getLogedIn = () => {
     if (this.username === 'admin' && this.password === 'admin') {
-      this.appComponent.loggedIN = true;
+      this.appComponent.isLoggedIn = true;
+      localStorage.setItem('loggedIN', 'true');
       this.router.navigate(['contacts']);
     } else {
-      this.appComponent.loggedIN = false;
       alert('Invalid username or password');
     }
   };
