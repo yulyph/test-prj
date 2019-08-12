@@ -19,7 +19,9 @@
   margin: 10px;
 }
 
-.fa-edit {
+.fa-edit,
+.fa-trash {
   color: red;
   cursor: pointer;
+  margin: 0 10px;
 }

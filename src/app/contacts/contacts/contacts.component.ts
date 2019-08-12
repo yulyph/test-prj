@@ -82,6 +82,14 @@ export class ContactsComponent implements OnInit {
     this.currentEditContactID = index;
   };
 
+  deleteContact = (contactIndex) => {
+    if (JSON.stringify(this.allContacts[contactIndex]) === JSON.stringify(this.newContact)) {
+      this.cancelContact();
+    }
+    this.allContacts.splice(contactIndex, 1);
+    localStorage.setItem('allContacts', JSON.stringify(this.allContacts));
+  };
+
   saveContact = () => {
     if (!this.validation()) {
       return;
