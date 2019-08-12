@@ -26,7 +26,9 @@ export class ContactsComponent implements OnInit {
     if (!localStorage.getItem('allContacts')) {
       localStorage.setItem('allContacts', '[]');
     }
-    this.allContacts = localStorage.getItem('allContacts') ? JSON.parse(localStorage.getItem('allContacts')) : [];
+    this.allContacts = localStorage.getItem('allContacts')
+      ? JSON.parse(localStorage.getItem('allContacts'))
+      : [];
   }
 
   ngOnInit() {
@@ -60,7 +62,8 @@ export class ContactsComponent implements OnInit {
     if (this.newContact.email === '') {
       alert('Email can not be empty');
       return false;
-    } else if (!(this.newContact.email.includes('@') && this.newContact.email.includes('.'))) {
+    } else if (!(this.newContact.email.includes('@')
+      && this.newContact.email.includes('.'))) {
       alert('Invalid email format');
       return false;
     }
@@ -72,7 +75,7 @@ export class ContactsComponent implements OnInit {
       return;
     }
     this.allContacts.push(this.newContact);
-    localStorage.setItem('allContacts', JSON.stringify(this.allContacts));
+    this.saveToLocalStorage();
     this.resetNewContact();
   };
 
@@ -83,11 +86,12 @@ export class ContactsComponent implements OnInit {
   };
 
   deleteContact = (contactIndex) => {
-    if (JSON.stringify(this.allContacts[contactIndex]) === JSON.stringify(this.newContact)) {
+    if (JSON.stringify(this.allContacts[contactIndex])
+      === JSON.stringify(this.newContact)) {
       this.cancelContact();
     }
     this.allContacts.splice(contactIndex, 1);
-    localStorage.setItem('allContacts', JSON.stringify(this.allContacts));
+    this.saveToLocalStorage();
   };
 
   saveContact = () => {
@@ -96,7 +100,7 @@ export class ContactsComponent implements OnInit {
     }
     this.isEditMode = false;
     this.allContacts[this.currentEditContactID] = this.newContact;
-    localStorage.setItem('allContacts', JSON.stringify(this.allContacts));
+    this.saveToLocalStorage();
     this.resetNewContact();
   };
 
@@ -104,5 +108,9 @@ export class ContactsComponent implements OnInit {
     this.isEditMode = false;
     this.resetNewContact();
   };
+
+  saveToLocalStorage = () => {
+    localStorage.setItem('allContacts', JSON.stringify(this.allContacts));
+  }
 
 }
